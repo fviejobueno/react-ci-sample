@@ -5,12 +5,9 @@ import React, { useState } from "react";
 
 
 function App() {
-
     const [playerName, setPlayerName] = useState("")
 
-
     return (
-
         <div className="Form">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
@@ -27,7 +24,6 @@ function App() {
             </header>
 
         </div>
-
     );
 }
 
