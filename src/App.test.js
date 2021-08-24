@@ -39,9 +39,9 @@ describe('<App/>', () => {
     addPlayer('Daigo');
     removePlayer('Daigo')
 
-    const allPlayers = screen.queryAllByTestId('player');
+    const allPlayersNames = screen.queryAllByTestId('player').map(p => within(p).getByTestId('name').textContent);
 
-    expect(allPlayers.length).toEqual(0);
+    expect(allPlayersNames).toEqual([]);
   });
 
   test('removes player form list with multiple ones', () => {
@@ -50,7 +50,8 @@ describe('<App/>', () => {
     addPlayer('Ricky');
     removePlayer('Daigo');
 
-    expect(screen.getByText(/ricky/i)).toBeInTheDocument();
-    expect(screen.queryAllByText(/daigo/i).length).toEqual(0);
+    const allPlayersNames = screen.queryAllByTestId('player').map(p => within(p).getByTestId('name').textContent);
+
+    expect(allPlayersNames).toEqual(['Ricky']);
   });
 });
