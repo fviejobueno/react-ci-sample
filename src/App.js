@@ -19,8 +19,11 @@ function App() {
                     My favorite Street Fighter players
                 </p>
                 <form>
-                    <input onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
-                    <input type="submit" value="Add"/>
+                    <input value={playerName} onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
+                    <input type="button" value="Add" onClick={e => {
+                        setPlayers([...players, playerName])
+                        setPlayerName("")
+                    }}/>
                 </form>
                 <ul>
                     { players.map((playerName, index) => <li id={index}>{playerName}</li>) }
