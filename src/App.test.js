@@ -5,6 +5,16 @@ import App from './App';
 
 describe('<App/>', () => {
 
+  const addPlayer = playerName => {
+    userEvent.type(screen.getByLabelText('playerNameInput'), playerName)
+    screen.getByText(/add/i).click();
+  }
+
+  const removePlayer = playerName => {
+    const playerToBeDeleted = screen.getAllByTestId('player').find(p => within(p).getByTestId('name').textContent == playerName)
+    within(playerToBeDeleted).getByLabelText('remove').click();
+  }
+
   test('renders title', () => {
     render(<App />);
     const title = screen.getByText(/My favorite Street Fighter players/i);
@@ -26,11 +36,8 @@ describe('<App/>', () => {
 
   test('removes player form list with a single one', () => {
     render(<App />);
-    userEvent.type(screen.getByLabelText('playerNameInput'), 'Daigo')
-    screen.getByText(/add/i).click();
-
-    const player = screen.getAllByTestId('player')[0];
-    within(player).getByLabelText('remove').click();
+    addPlayer('Daigo');
+    removePlayer('Daigo')
 
     const allPlayers = screen.queryAllByTestId('player');
 
@@ -39,14 +46,9 @@ describe('<App/>', () => {
 
   test('removes player form list with multiple ones', () => {
     render(<App />);
-    userEvent.type(screen.getByLabelText('playerNameInput'), 'Daigo')
-    screen.getByText(/add/i).click();
-
-    userEvent.type(screen.getByLabelText('playerNameInput'), 'Ricky')
-    screen.getByText(/add/i).click();
-
-    const playerToBeDeleted = screen.getAllByTestId('player').find(p => within(p).getByTestId('name').textContent == 'Daigo')
-    within(playerToBeDeleted).getByLabelText('remove').click();
+    addPlayer('Daigo');
+    addPlayer('Ricky');
+    removePlayer('Daigo');
 
     expect(screen.getByText(/ricky/i)).toBeInTheDocument();
     expect(screen.queryAllByText(/daigo/i).length).toEqual(0);
