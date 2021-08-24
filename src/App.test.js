@@ -15,6 +15,8 @@ describe('<App/>', () => {
     within(playerToBeDeleted).getByLabelText('remove').click();
   }
 
+  const allPlayerNames = () => screen.queryAllByTestId('player').map(p => within(p).getByTestId('name').textContent);
+
   test('renders title', () => {
     render(<App />);
     const title = screen.getByText(/My favorite Street Fighter players/i);
@@ -39,9 +41,7 @@ describe('<App/>', () => {
     addPlayer('Daigo');
     removePlayer('Daigo')
 
-    const allPlayersNames = screen.queryAllByTestId('player').map(p => within(p).getByTestId('name').textContent);
-
-    expect(allPlayersNames).toEqual([]);
+    expect(allPlayerNames()).toEqual([]);
   });
 
   test('removes player form list with multiple ones', () => {
@@ -50,8 +50,6 @@ describe('<App/>', () => {
     addPlayer('Ricky');
     removePlayer('Daigo');
 
-    const allPlayersNames = screen.queryAllByTestId('player').map(p => within(p).getByTestId('name').textContent);
-
-    expect(allPlayersNames).toEqual(['Ricky']);
+    expect(allPlayerNames()).toEqual(['Ricky']);
   });
 });
