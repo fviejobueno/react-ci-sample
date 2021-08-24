@@ -9,9 +9,12 @@ function App() {
     const [players, setPlayers] = useState(['daigo'])
 
     return (
-        <div className="Form">
+        <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
+                <title>Street Fighter</title>
+            </header>
+            <main className="App-content">
                 <p>
                     My favorite Street Fighter players
                 </p>
@@ -19,13 +22,15 @@ function App() {
                     <input onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
                     <input type="submit" value="Add"/>
                 </form>
-                <p>
-                    {playerName}
-                </p>
                 <ul>
                     { players.map((playerName, index) => <li id={index}>{playerName}</li>) }
                 </ul>
-            </header>
+            </main>
+            <footer className="App-footer">
+                <p>
+                    Made just for you by Paquito and Nando
+                </p>
+            </footer>
         </div>
     );
 }
