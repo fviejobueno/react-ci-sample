@@ -10,7 +10,7 @@ function App() {
     const [players, setPlayers] = useState([])
 
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
-        <ul>{ players.map((playerName, index) => <li id={index}>{playerName}</li>) }</ul>
+        <ul>{ players.map((playerName, index) => <li key={index}>{playerName}</li>) }</ul>
 
     const onSubmit = e => {
         e.preventDefault()
