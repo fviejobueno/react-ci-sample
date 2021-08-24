@@ -15,14 +15,11 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
                 <p>
-                    Include Player Name.
+                    My favorite Street Fighter players
                 </p>
                 <form>
-                    <label>
-                        Name:
-                        <input onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
-                    </label>
-                    <input type="submit" value="Submit"/>
+                    <input onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
+                    <input type="submit" value="Add"/>
                 </form>
                 <p>
                     {playerName}
