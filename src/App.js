@@ -3,10 +3,14 @@ import './App.css';
 
 import React, { useState } from "react";
 
+const NO_PLAYER_NOTICE = <p>Ops, no players to show</p>
 
 function App() {
     const [playerName, setPlayerName] = useState("")
     const [players, setPlayers] = useState([])
+
+    const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
+        <ul>{ players.map((playerName, index) => <li id={index}>{playerName}</li>) }</ul>
 
     return (
         <div className="App">
@@ -25,9 +29,7 @@ function App() {
                         setPlayerName("")
                     }}/>
                 </form>
-                <ul>
-                    { players.map((playerName, index) => <li id={index}>{playerName}</li>) }
-                </ul>
+                {playerList}
             </main>
             <footer className="App-footer">
                 <p>
