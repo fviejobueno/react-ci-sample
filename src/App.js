@@ -9,9 +9,12 @@ function App() {
     const [playerName, setPlayerName] = useState("")
     const [players, setPlayers] = useState([])
 
+    const removePlayerOnIndex = index => setPlayers([...players].filter((_, i) => i !== index))
+    const asListItem = (playerName, index) => <li key={index} data-testid="player"><span data-testid="name">{playerName}</span><button aria-label="remove" onClick={() => removePlayerOnIndex(index)}>X</button></li>
+
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
         <ul aria-label="playerList">
-            { players.map((playerName, index) => <li key={index} data-testid="player"><span data-testid="name">{playerName}</span><button aria-label="remove" onClick={() => setPlayers([...players].filter((_, i) => i !== index))}>X</button></li>) }
+            { players.map(asListItem) }
         </ul>
 
     const onSubmit = e => {
