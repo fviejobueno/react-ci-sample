@@ -11,7 +11,7 @@ function App() {
 
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
         <ul aria-label="playerList">
-            { players.map((playerName, index) => <li key={index} data-testid="player">{playerName}<button aria-label="remove" onClick={() => setPlayers([])}>X</button></li>) }
+            { players.map((playerName, index) => <li key={index} data-testid="player"><span data-testid="name">{playerName}</span><button aria-label="remove" onClick={() => setPlayers([...players].filter((_, i) => i !== index))}>X</button></li>) }
         </ul>
 
     const onSubmit = e => {
