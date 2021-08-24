@@ -51,3 +51,8 @@
   width: 100%;
   font-size: calc(1px + 2vmin);
 }
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
