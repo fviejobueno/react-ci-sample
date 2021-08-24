@@ -6,6 +6,7 @@ import React, { useState } from "react";
 
 function App() {
     const [playerName, setPlayerName] = useState("")
+    const [players, setPlayers] = useState(['daigo'])
 
     return (
         <div className="Form">
@@ -21,8 +22,10 @@ function App() {
                 <p>
                     {playerName}
                 </p>
+                <ul>
+                    { players.map((playerName, index) => <li id={index}>{playerName}</li>) }
+                </ul>
             </header>
-
         </div>
     );
 }
