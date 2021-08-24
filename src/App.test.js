@@ -4,12 +4,15 @@ import App from './App';
 
 describe('<App/>', () => {
 
-  test('renders learn react link', () => {
+  test('renders title', () => {
     render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+    const title = screen.getByText(/My favorite Street Fighter players/i);
+    expect(title).toBeInTheDocument();
   });
 
+  test('renders notice when list is empty', () => {
+    render(<App />);
+    const title = screen.getByText(/Ops, no players to show/i);
+    expect(title).toBeInTheDocument();
+  });
 });
-
-
