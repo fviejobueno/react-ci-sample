@@ -10,7 +10,9 @@ function App() {
     const [players, setPlayers] = useState([])
 
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
-        <ul>{ players.map((playerName, index) => <li key={index}>{playerName}</li>) }</ul>
+        <ul aria-label="playerList">
+            { players.map((playerName, index) => <li key={index} data-testid="player">{playerName}</li>) }
+        </ul>
 
     const onSubmit = e => {
         e.preventDefault()
@@ -30,7 +32,7 @@ function App() {
                     My favorite Street Fighter players
                 </p>
                 <form onSubmit={onSubmit}>
-                    <input value={playerName} onChange={e => setPlayerName(e.target.value)} type="text" name="name"/>
+                    <input name="playerNameInput" aria-label="playerNameInput" type="text" value={playerName} onChange={e => setPlayerName(e.target.value)}/>
                     <input type="submit" value="Add" />
                 </form>
                 {playerList}
