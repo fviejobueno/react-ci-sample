@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const NO_PLAYER_NOTICE = <p>Ops, no players to show</p>
 
@@ -11,6 +11,13 @@ function App() {
 
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
         <ul>{ players.map((playerName, index) => <li id={index}>{playerName}</li>) }</ul>
+
+    const onSubmit = e => {
+        e.preventDefault()
+        setPlayers([...players, playerName])
+    }
+
+    useEffect(() => { setPlayerName("") } , [players])
 
     return (
         <div className="App">
@@ -22,12 +29,9 @@ function App() {
                 <p>
                     My favorite Street Fighter players
                 </p>
-                <form>
-                    <input value={playerName} onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
-                    <input type="button" value="Add" onClick={() => {
-                        setPlayers([...players, playerName])
-                        setPlayerName("")
-                    }}/>
+                <form onSubmit={onSubmit}>
+                    <input value={playerName} onChange={e => setPlayerName(e.target.value)} type="text" name="name"/>
+                    <input type="submit" value="Add" />
                 </form>
                 {playerList}
             </main>
