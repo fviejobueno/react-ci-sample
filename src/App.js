@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 function App() {
     const [playerName, setPlayerName] = useState("")
-    const [players, setPlayers] = useState(['daigo'])
+    const [players, setPlayers] = useState([])
 
     return (
         <div className="App">
