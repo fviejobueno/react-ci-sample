@@ -20,7 +20,7 @@ function App() {
                 </p>
                 <form>
                     <input value={playerName} onChange={(e) => {setPlayerName(e.target.value)}} type="text" name="name"/>
-                    <input type="button" value="Add" onClick={e => {
+                    <input type="button" value="Add" onClick={() => {
                         setPlayers([...players, playerName])
                         setPlayerName("")
                     }}/>
