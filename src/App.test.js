@@ -7,7 +7,7 @@ describe('<App/>', () => {
 
   const addPlayer = playerName => {
     userEvent.type(screen.getByLabelText('playerNameInput'), playerName)
-    screen.getByText(/add/i).click();
+    screen.getByTestId(/add/i).click();
   }
 
   const removePlayer = playerName => {
@@ -32,7 +32,8 @@ describe('<App/>', () => {
   test('adds player to list', () => {
     render(<App />);
     userEvent.type(screen.getByLabelText('playerNameInput'), 'Daigo')
-    screen.getByText(/add/i).click();
+    screen.getByTestId(/add/i).click();
+
     expect(screen.getByText(/daigo/i)).toBeInTheDocument();
   });
 
