@@ -60,5 +60,9 @@ describe('<App/>', () => {
 
     const validationErrorMessage = screen.getByText(/Please write a player name before adding it to the list/i);
     expect(validationErrorMessage).toBeInTheDocument();
+
+
+
+
   })
 });
