@@ -7,7 +7,7 @@ const NO_PLAYER_NOTICE = <p>Ops, no players to show</p>
 
 function App() {
     const [playerName, setPlayerName] = useState("")
-    const [validationError, setValidationError] = useState("")
+    const [validationError, setValidationError] = useState(false)
     const [players, setPlayers] = useState([])
 
     const playerList = players.length === 0 ? NO_PLAYER_NOTICE :
@@ -20,7 +20,7 @@ function App() {
         e.preventDefault()
 
         if (!playerName){
-            setValidationError(<p>Player name can not be empty</p>)
+            setValidationError(true)
             return
         }
 
