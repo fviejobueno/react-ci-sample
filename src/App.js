@@ -32,6 +32,7 @@ function App() {
                     My favorite Street Fighter players
                 </p>
                 <form onSubmit={onSubmit}>
+                    <p>Player name can not be empty</p>
                     <input name="playerNameInput" aria-label="playerNameInput" type="text" value={playerName} onChange={e => setPlayerName(e.target.value)}/>
                     <input type="submit" value="Add" />
                 </form>
