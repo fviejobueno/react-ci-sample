@@ -19,14 +19,14 @@ describe('<App/>', () => {
   test('adds player to list', () => {
     render(<App />);
     userEvent.type(screen.getByLabelText('playerNameInput'), "Daigo")
-    screen.getByText(/add/i).click();
+    screen.getByTestId(/addPlayer/i).click();
     expect(screen.getByText(/daigo/i)).toBeInTheDocument();
   });
 
 
   test('does not allow empty names to be added on list', () => {
     render(<App />);
-    screen.getByText(/add/i).click();
+    screen.getByTestId(/addPlayer/i).click();
 
     const validationErrorMessage = screen.getByText(/Player name can not be empty/i);
     expect(validationErrorMessage).toBeInTheDocument();

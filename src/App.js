@@ -3,7 +3,10 @@ import './App.css';
 
 import React, { useState, useEffect } from "react";
 
-const NO_PLAYER_NOTICE = <p>Ops, no players to show</p>
+const NO_PLAYER_NOTICE = <>
+<p>Ops, no players to show</p>
+<p>Start adding your favorite ones!</p>
+</>
 
 function App() {
     const [playerName, setPlayerName] = useState("")
@@ -42,7 +45,7 @@ function App() {
                 <form onSubmit={onSubmit}>
                     {validationError && <p>Player name can not be empty</p>}
                     <input name="playerNameInput" aria-label="playerNameInput" type="text" value={playerName} onChange={e => setPlayerName(e.target.value)}/>
-                    <input type="submit" value="Add" />
+                    <input type="submit" value="Add" data-testid="addPlayer" />
                 </form>
                 {playerList}
             </main>
