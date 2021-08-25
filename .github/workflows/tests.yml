@@ -5,7 +5,7 @@ name: Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ remove-player ]
   pull_request:
     branches: [ main ]
 
