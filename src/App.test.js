@@ -51,5 +51,12 @@ describe('<App/>', () => {
     removePlayer('Daigo');
 
     expect(allPlayerNames()).toEqual(['Ricky']);
+
+
+
+
+
+
+
   });
 });
