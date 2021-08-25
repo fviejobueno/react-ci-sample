@@ -28,7 +28,7 @@ describe('<App/>', () => {
     render(<App />);
     screen.getByTestId(/addPlayer/i).click();
 
-    const validationErrorMessage = screen.getByText(/Player name can not be empty/i);
+    const validationErrorMessage = screen.getByText(/Please write a player name before adding it to the list/i);
     expect(validationErrorMessage).toBeInTheDocument();
   })
 });
